@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta — Landing Page | Agência Ângelo × Kalyane</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lj:   #E8601A;
+    --lj2:  #F07A35;
+    --lj3:  #C44D0E;
+    --lj:   #E8601A;
+    --lj2:  #F07A35;
+    --dark:  #0A0C10;
+    --dark2: #111318;
+    --dark3: #181B22;
+    --dark4: #1F222A;
+    --creme:  #FAF8F4;
+    --creme2: #F0ECE4;
+    --creme3: #E4DDD2;
+    --texto:  #1A2018;
+    --suave:  #6A7068;
+    --lj:     #E8601A;
+    --lj2:    #F07A35;
+    --tw:     rgba(255,255,255,0.9);
+    --ts:     rgba(255,255,255,0.42);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: white; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(14,20,18,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 56px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 14px; font-weight: 600; color: white; text-decoration: none; }
+  .nav-logo span { color: var(--lj); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--lj); }
+
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 56px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 25%, rgba(232,96,26,0.1) 0%, transparent 45%), radial-gradient(ellipse at 15% 75%, rgba(232,96,26,0.08) 0%, transparent 45%); }
+  .hero::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 44px 44px; }
+
+  .hero-inner { max-width: 960px; width: 100%; position: relative; z-index: 2; }
+
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lj); margin-bottom: 22px; opacity: 0; animation: up 0.7s 0.1s forwards; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--lj); }
+
+  .hero-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6.5vw, 76px); font-weight: 700; line-height: 1.0; color: white; margin-bottom: 20px; opacity: 0; animation: up 0.7s 0.25s forwards; }
+  .hero-h1 em { font-style: italic; color: var(--lj); font-weight: 400; }
+
+  .hero-p { font-size: 15px; font-weight: 300; color: var(--ts); max-width: 400px; line-height: 1.85; margin-bottom: 40px; opacity: 0; animation: up 0.7s 0.4s forwards; }
+
+  .hero-meta { display: flex; flex-direction: column; gap: 10px; opacity: 0; animation: up 0.7s 0.52s forwards; }
+  .hm-row { display: flex; align-items: baseline; gap: 8px; font-size: 13px; }
+  .hm-row label { color: rgba(255,255,255,0.28); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; flex-shrink: 0; }
+  .hm-row span { color: var(--tw); font-weight: 400; }
+
+  /* Card visual de referência */
+
+  .ref-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+  .ref-bar { background: var(--dark4); padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+  .ref-dots { display: flex; gap: 5px; }
+  .ref-dots span { width: 9px; height: 9px; border-radius: 50%; display: block; }
+  .ref-dots span:nth-child(1) { background: #FF5F57; }
+  .ref-dots span:nth-child(2) { background: #FFBD2E; }
+  .ref-dots span:nth-child(3) { background: #28CA41; }
+  .ref-url { font-size: 10px; color: rgba(255,255,255,0.28); font-family: monospace; flex: 1; text-align: center; }
+  .ref-preview { padding: 24px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .ref-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ref-logo-area { display: flex; align-items: center; gap: 8px; }
+  .ref-logo-dot { width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, var(--lj), var(--lj2)); }
+  .ref-logo-txt { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6); }
+  .ref-nav { display: flex; gap: 6px; }
+  .ref-nav span { width: 20px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.1); display: block; }
+  .ref-hero-block { background: linear-gradient(135deg, rgba(232,96,26,0.1), rgba(232,96,26,0.1)); border-radius: 8px; padding: 18px; text-align: center; }
+  .ref-hero-block .rh { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+  .ref-hero-block .rs { font-size: 9px; color: rgba(255,255,255,0.28); margin-bottom: 8px; }
+  .ref-btn { display: inline-block; background: var(--lj2); color: white; font-size: 8px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+  .ref-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+  .ref-minicard { background: rgba(255,255,255,0.04); border-radius: 6px; padding: 8px; }
+  .ref-minicard .dot { width: 14px; height: 14px; border-radius: 50%; margin-bottom: 5px; }
+  .ref-minicard .l { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.07); margin-bottom: 3px; }
+  .ref-minicard .l.s { width: 65%; }
+  .ref-link { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; font-size: 10px; color: var(--lj); font-weight: 500; text-decoration: none; border-top: 1px solid rgba(255,255,255,0.05); }
+  .ref-link:hover { color: var(--lj2); }
+
+  @keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── LAYOUT ── */
+  .sec { padding: 80px 56px; }
+  .sec-inner { max-width: 960px; margin: 0 auto; }
+  .sec-creme { background: var(--creme); color: var(--texto); }
+  .sec-mid { background: var(--dark2); }
+  .divisor { border: none; border-top: 1px solid rgba(255,255,255,0.07); }
+  .divisor-l { border: none; border-top: 1px solid var(--creme3); }
+
+  .sh { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
+  .sh-n { font-size: 9.5px; font-weight: 700; letter-spacing: 0.2em; color: var(--lj); background: rgba(232,96,26,0.1); border: 1px solid rgba(232,96,26,0.25); padding: 4px 10px; border-radius: 4px; flex-shrink: 0; }
+  .sh-t { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; color: white; line-height: 1; }
+  .sec-creme .sh-t { color: var(--texto); }
+  .sec-creme .sh-n { background: rgba(232,96,26,0.08); border-color: rgba(232,96,26,0.2); color: var(--lj3); }
+
+  /* ── O QUE INCLUI ── */
+  .inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .inc-card { background: white; border: 1px solid var(--creme3); border-radius: 12px; padding: 24px 22px; display: flex; gap: 14px; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+  .inc-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+  .inc-icon { font-size: 24px; flex-shrink: 0; }
+  .inc-txt h4 { font-size: 14px; font-weight: 600; color: var(--texto); margin-bottom: 4px; }
+  .inc-txt p { font-size: 12.5px; color: var(--suave); line-height: 1.65; }
+
+  /* ── INVESTIMENTO ── */
+  .inv-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+
+  .inv-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 36px 32px; position: relative; overflow: hidden; }
+  .inv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--lj3), var(--lj)); }
+  .inv-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lj); background: rgba(232,96,26,0.1); border: 1px solid rgba(232,96,26,0.25); padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+  .inv-nome { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 24px; }
+  .inv-nome em { font-style: italic; color: var(--lj); }
+  .inv-valor { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; color: white; line-height: 1; margin-bottom: 4px; }
+  .inv-valor sup { font-size: 22px; color: var(--lj); vertical-align: super; margin-right: 3px; }
+  .inv-ciclo { font-size: 12px; color: var(--ts); margin-bottom: 28px; }
+  .inv-ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .inv-ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); line-height: 1.5; }
+  .inv-ul li::before { content: '✓'; color: var(--lj); font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .inv-ul li.d { color: rgba(255,255,255,0.8); }
+  .inv-ul li.d::before { color: var(--lj2); }
+  .inv-cta { display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(232,96,26,0.1); border: 1px solid rgba(232,96,26,0.3); color: var(--lj2); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 20px; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+  .inv-cta:hover { background: rgba(232,96,26,0.2); }
+
+  /* Stack direito */
+  .inv-stack { display: flex; flex-direction: column; gap: 12px; }
+
+  .pgto-card { background: var(--dark4); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 24px 26px; }
+  .pgto-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lj); margin-bottom: 10px; }
+  .pgto-h { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 700; color: white; margin-bottom: 14px; }
+  .pgto-steps { display: flex; flex-direction: column; gap: 10px; }
+  .pgto-step { display: flex; align-items: flex-start; gap: 10px; }
+  .pgto-n { width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,26,0.1); border: 1px solid rgba(232,96,26,0.25); color: var(--lj); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pgto-step p { font-size: 12.5px; color: var(--ts); line-height: 1.65; }
+  .pgto-step p strong { color: var(--tw); }
+
+  .mensal-card { background: rgba(232,96,26,0.06); border: 1px solid rgba(232,96,26,0.15); border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; gap: 16px; }
+  .mensal-icon { font-size: 24px; flex-shrink: 0; }
+  .mensal-txt label { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lj2); margin-bottom: 4px; }
+  .mensal-txt span { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: white; }
+  .mensal-txt p { font-size: 11.5px; color: var(--ts); margin-top: 2px; line-height: 1.5; }
+
+  .prazo-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; }
+  .prazo-card .pi { font-size: 22px; flex-shrink: 0; }
+  .prazo-card label { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 3px; }
+  .prazo-card span { font-size: 15px; font-weight: 600; color: white; }
+
+  /* ── PROCESSO ── */
+  .processo { display: flex; flex-direction: column; position: relative; }
+  .processo::before { content: ''; position: absolute; left: 19px; top: 20px; bottom: 20px; width: 1px; background: var(--creme3); }
+  .proc-row { display: grid; grid-template-columns: 40px 1fr; gap: 22px; padding-bottom: 26px; }
+  .proc-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--creme); border: 2px solid rgba(232,96,26,0.35); color: var(--lj3); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; position: relative; z-index: 1; }
+  .proc-body { padding-top: 8px; }
+  .proc-h { font-size: 15px; font-weight: 600; color: var(--texto); margin-bottom: 4px; }
+  .proc-p { font-size: 13px; color: var(--suave); line-height: 1.7; max-width: 540px; }
+
+  /* ── AGÊNCIA ── */
+  .agencia-box { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 36px; position: relative; overflow: hidden; }
+  .agencia-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--lj3), var(--lj)); }
+  .agencia-nums { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 24px; }
+  .agencia-num { background: var(--dark); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 18px; text-align: center; }
+  .agencia-num span { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--lj); display: block; line-height: 1; }
+  .agencia-num p { font-size: 11px; color: rgba(255,255,255,0.32); margin-top: 4px; }
+
+  /* ── CTA ── */
+  .cta-sec { padding: 88px 56px; position: relative; overflow: hidden; }
+  .cta-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(232,96,26,0.07) 0%, transparent 55%); pointer-events: none; }
+  .cta-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+  .cta-h { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 12px; }
+  .cta-h em { font-style: italic; color: var(--lj); }
+  .cta-p { font-size: 14.5px; font-weight: 300; color: var(--ts); line-height: 1.8; max-width: 440px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--lj); color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 28px; border-radius: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s, transform 0.2s; }
+  .cta-btn:hover { background: var(--lj2); transform: translateY(-2px); }
+
+  footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 32px 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .ft-logo { font-size: 14px; font-weight: 600; color: white; }
+  .ft-logo span { color: var(--lj); }
+  .ft-info { font-size: 12px; color: rgba(255,255,255,0.24); text-align: right; line-height: 1.9; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; } .nav-links { display: none; }
+    .hero, .sec, .cta-sec { padding: 80px 24px 60px; } .hero { padding-top: 100px; }
+    .hero-inner, .inv-layout, .inc-grid, .agencia-nums { grid-template-columns: 1fr; }
+    .cta-inner { grid-template-columns: 1fr; gap: 28px; }
+    footer { padding: 28px 24px; } .ft-info { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><span>Agência</span> Ângelo</a>
+  <ul class="nav-links">
+    <li><a href="#incluso">O que inclui</a></li>
+    <li><a href="#investimento">Investimento</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="https://instagram.com/aagenciaangelo" target="_blank" style="color:var(--lj)!important;">@aagenciaangelo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    
+      <div class="hero-eyebrow">Proposta de Desenvolvimento Web · Saúde</div>
+      <h1 class="hero-h1">Sua presença<br>digital <em>profissional</em><br>na internet.</h1>
+      <p class="hero-p">Uma landing page exclusiva para Kalyane — design elegante, copywriting estratégico e domínio personalizado incluso.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);font-size:12px;font-weight:500;padding:7px 14px;border-radius:40px;">🎨 Design exclusivo</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);font-size:12px;font-weight:500;padding:7px 14px;border-radius:40px;">✍️ Copywriting incluso</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);font-size:12px;font-weight:500;padding:7px 14px;border-radius:40px;">🌐 Domínio 1 ano grátis</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);font-size:12px;font-weight:500;padding:7px 14px;border-radius:40px;">🔒 SSL incluso</div>
+    </div>
+      <div class="hero-meta">
+        <div class="hm-row"><label>Para</label><span>Kalyane — Psicóloga</span></div>
+        <div class="hm-row"><label>Por</label><span>Adson Ângelo · Agência Ângelo</span></div>
+        <div class="hm-row"><label>Prazo</label><span>Primeira versão em até 7 dias</span></div>
+        <div class="hm-row"><label>Validade</label><span>15 dias</span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+          <a href="https://dramonicamonttan.com.br/" target="_blank" class="ref-link">▶ Ver referência completa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE INCLUI -->
+<section id="incluso" class="sec sec-creme">
+  <div class="sec-inner">
+    <div class="sh"><span class="sh-n">01</span><h2 class="sh-t">O que está incluso</h2></div>
+    <p style="font-size:15px;font-weight:300;color:var(--suave);max-width:600px;line-height:1.85;margin-bottom:36px;">Tudo que você precisa para ter uma presença digital profissional — do design à publicação, sem precisar lidar com a parte técnica.</p>
+    <div class="inc-grid">
+      <div class="inc-card">
+        <div class="inc-icon">🎨</div>
+        <div class="inc-txt"><h4>Design exclusivo</h4><p>Layout criado especialmente para Kalyane — com identidade visual, paleta de cores e tipografia que refletem sua imagem profissional.</p></div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">✍️</div>
+        <div class="inc-txt"><h4>Copywriting incluso</h4><p>Textos estratégicos para todas as seções da landing page — apresentação, serviços, diferenciais e chamadas para ação.</p></div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🌐</div>
+        <div class="inc-txt"><h4>Domínio personalizado — 1 ano grátis</h4><p>Registro do seu domínio próprio (www.catarinachagas.com.br ou similar) incluso no valor — sem custo adicional no primeiro ano.</p></div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🚀</div>
+        <div class="inc-txt"><h4>Publicação completa</h4><p>Configuração da hospedagem, certificado SSL (https) e publicação do site para acesso público — com toda a parte técnica resolvida.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divisor-l">
+
+<!-- INVESTIMENTO -->
+<section id="investimento" class="sec sec-mid">
+  <div class="sec-inner">
+    <div class="sh"><span class="sh-n">02</span><h2 class="sh-t">Investimento</h2></div>
+    <div class="inv-layout">
+      <div class="inv-card">
+        <div class="inv-badge">Landing Page Profissional</div>
+        <div class="inv-nome">Produção completa<br><em>com domínio incluso</em></div>
+        <div class="inv-valor"><sup>R$</sup>300</div>
+        <div class="inv-ciclo">pagamento em 2 etapas · entrega em até 7 dias</div>
+        <ul class="inv-ul">
+          <li>Design exclusivo e identidade visual</li>
+          <li>Copywriting — textos de todas as seções</li>
+          <li>Publicação com hospedagem configurada</li>
+          <li>Certificado SSL (https)</li>
+          <li class="d">🌐 Domínio personalizado incluso — 1 ano grátis</li>
+        </ul>
+        <a href="https://wa.me/5584991236489?text=Ol%C3%A1%2C+Adson%21+Quero+seguir+com+a+landing+page+%28R%24+300%2C00%29+para+Kalyane+Psic%C3%B3loga." target="_blank" class="inv-cta">💬 Quero a landing page</a>
+      </div>
+
+      <div class="inv-stack">
+        <div class="pgto-card">
+          <div class="pgto-label">Forma de pagamento</div>
+          <div class="pgto-h">50% + 50%</div>
+          <div class="pgto-steps">
+            <div class="pgto-step"><div class="pgto-n">1</div><p><strong>50% para iniciar</strong> — R$ 150,00 antes de começarmos a produção.</p></div>
+            <div class="pgto-step"><div class="pgto-n">2</div><p><strong>50% na aprovação</strong> — R$ 150,00 após você aprovar a landing page finalizada.</p></div>
+          </div>
+        </div>
+        <div class="mensal-card">
+          <div class="mensal-icon">🔧</div>
+          <div class="mensal-txt">
+            <label>Hospedagem e manutenção</label>
+            <span>R$ 50,00 / mês</span>
+            <p>Hospedagem, SSL e suporte técnico — cobrado mensalmente após a publicação.</p>
+          </div>
+        </div>
+        <div class="prazo-card">
+          <div class="pi">⏱</div>
+          <div>
+            <label>Prazo de entrega</label>
+            <span>Primeira versão em até 7 dias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo" class="sec sec-creme">
+  <div class="sec-inner">
+    <div class="sh"><span class="sh-n">03</span><h2 class="sh-t">Como funciona</h2></div>
+    <div class="processo">
+      <div class="proc-row">
+        <div class="proc-dot">01</div>
+        <div class="proc-body"><h3 class="proc-h">Briefing e pagamento inicial</h3><p class="proc-p">Fazemos uma conversa rápida de briefing para entender seus serviços, público e objetivos. Com os 50% iniciais confirmados, a produção começa imediatamente.</p></div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-dot">02</div>
+        <div class="proc-body"><h3 class="proc-h">Produção do design e dos textos</h3><p class="proc-p">Desenvolvemos o layout completo e os textos de todas as seções da landing page — com base na referência da Dra. Monica Monttán e adaptado para o perfil de Kalyane.</p></div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-dot">03</div>
+        <div class="proc-body"><h3 class="proc-h">Primeira versão em até 7 dias</h3><p class="proc-p">Entregamos a primeira versão completa da landing page para sua avaliação — com tempo hábil para ajustes antes da aprovação final.</p></div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-dot">04</div>
+        <div class="proc-body"><h3 class="proc-h">Aprovação e pagamento final</h3><p class="proc-p">Você aprova a landing page com todos os ajustes. Com a aprovação confirmada, é feito o pagamento dos 50% restantes.</p></div>
+      </div>
+      <div class="proc-row" style="padding-bottom:0">
+        <div class="proc-dot">05</div>
+        <div class="proc-body"><h3 class="proc-h">Publicação com domínio próprio</h3><p class="proc-p">Registramos seu domínio (incluso no valor), configuramos a hospedagem com SSL e publicamos a landing page. A mensalidade de R$ 50/mês começa após a publicação.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGÊNCIA -->
+<section class="sec sec-mid">
+  <div class="sec-inner">
+    <div class="sh"><span class="sh-n">04</span><h2 class="sh-t">Agência Ângelo</h2></div>
+    <div class="agencia-box">
+      <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,0.62);line-height:1.9;margin-bottom:14px;">A <strong style="color:white;font-weight:500;">Agência Ângelo</strong> é uma agência de marketing digital com quase 5 anos de atuação, especializada em presença digital para profissionais de saúde. Já produzimos landing pages para médicos, psicólogos e clínicas — sempre com design de alto nível e comunicação estratégica.</p>
+      <p style="font-size:15px;font-weight:300;color:rgba(255,255,255,0.62);line-height:1.9;">Liderada por <strong style="color:white;font-weight:500;">Adson Ângelo</strong>, graduado em Gestão de Marketing com <strong style="color:white;font-weight:500;">MBA em Comunicação e Marketing pela USP/ECA</strong>.</p>
+      <div class="agencia-nums">
+        <div class="agencia-num"><span>5</span><p>anos de atuação</p></div>
+        <div class="agencia-num"><span>100+</span><p>clientes atendidos</p></div>
+        <div class="agencia-num"><a href="https://instagram.com/aagenciaangelo" target="_blank" style="text-decoration:none;"><span style="font-size:22px;">📸</span><p style="color:var(--lj);margin-top:4px;">@aagenciaangelo</p></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">Pronta para ter<br>seu site <em>no ar?</em></h2>
+      <p class="cta-p">Me chame no WhatsApp e já começamos o briefing — primeira versão em até 7 dias.</p>
+    </div>
+    <a href="https://wa.me/5584991236489?text=Ol%C3%A1%2C+Adson%21+Quero+seguir+com+a+landing+page+para+Kalyane+Psic%C3%B3loga." target="_blank" class="cta-btn">💬 Falar pelo WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><span>Agência</span> Ângelo</div>
+  <div class="ft-info">Adson Ângelo · contato@agenciaangelo.com.br<br><a href="https://instagram.com/aagenciaangelo" target="_blank" style="color:var(--lj);text-decoration:none;">@aagenciaangelo</a><br>Proposta válida por 15 dias · Julho 2026</div>
+</footer>
+
+</body>
+</html>
